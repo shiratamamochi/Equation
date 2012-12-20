@@ -166,4 +166,15 @@ Equation* e;
     STAssertEqualsWithAccuracy(-sqrt(3.0)/2, [e imaginary2], 0.00001, @"imaginary2 error");
 }
 
+// 一次方程式の場合。
+- (void)test5
+{
+    e = [[Equation alloc] initWithA:0 b:3 c:-9];
+    
+    STAssertEqualsWithAccuracy(3.0, [e real1], 0.00001, @"real1 error");
+    STAssertEqualsWithAccuracy(3.0, [e real2], 0.00001, @"real2 error");
+    STAssertEqualsWithAccuracy(0.0, [e imaginary1], 0.00001, @"imaginary1 error");
+    STAssertEqualsWithAccuracy(0.0, [e imaginary2], 0.00001, @"imaginary2 error");
+}
+
 @end
