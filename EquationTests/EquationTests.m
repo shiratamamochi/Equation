@@ -130,6 +130,7 @@ Equation* e;
 
 //課題のテストケース
 
+// x^2 - 1 = 0 をテスト
 // 実数解 2つの場合。
 - (void)test1_
 {
@@ -144,6 +145,7 @@ Equation* e;
     STAssertEqualsWithAccuracy(0.0, [e imaginary2], 0.00001, @"imaginary2 error");
 }
 
+// x^2 - 6x + 9 = 0 をテスト
 // 実数解1つ(重解)の場合
 - (void)test2_
 {
@@ -155,6 +157,7 @@ Equation* e;
     STAssertEqualsWithAccuracy(0.0, [e imaginary2], 0.00001, @"imaginary2 error");
 }
 
+// x^2 + x + 1 = 0 をテスト
 // 虚数解 2つの場合。
 - (void)test3_
 {
@@ -166,13 +169,26 @@ Equation* e;
     STAssertEqualsWithAccuracy(-sqrt(3.0)/2, [e imaginary2], 0.00001, @"imaginary2 error");
 }
 
-// 一次方程式の場合。
+// 3x - 9 = 0 をテスト
+// 一次方程式(a=0)の場合。
 - (void)test5
 {
     e = [[Equation alloc] initWithA:0 b:3 c:-9];
     
     STAssertEqualsWithAccuracy(3.0, [e real1], 0.00001, @"real1 error");
     STAssertEqualsWithAccuracy(3.0, [e real2], 0.00001, @"real2 error");
+    STAssertEqualsWithAccuracy(0.0, [e imaginary1], 0.00001, @"imaginary1 error");
+    STAssertEqualsWithAccuracy(0.0, [e imaginary2], 0.00001, @"imaginary2 error");
+}
+
+// 1 != 0 (解なし)をテスト
+// 定数(a=b=0)の場合。
+- (void)test6
+{
+    e = [[Equation alloc] initWithA:0 b:0 c:1];
+    
+    STAssertEqualsWithAccuracy(NAN, [e real1], 0.00001, @"real1 error");
+    STAssertEqualsWithAccuracy(NAN, [e real2], 0.00001, @"real2 error");
     STAssertEqualsWithAccuracy(0.0, [e imaginary1], 0.00001, @"imaginary1 error");
     STAssertEqualsWithAccuracy(0.0, [e imaginary2], 0.00001, @"imaginary2 error");
 }

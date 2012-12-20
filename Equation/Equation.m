@@ -38,6 +38,9 @@
 - (double)real1
 {
     if([self isReal]) {
+        if (a==0) {
+            return -c/b;
+        }
         return (-b + sqrt([self discriminant]))/(2*a);
     }
     return (-b)/(2*a);
@@ -46,6 +49,9 @@
 - (double)real2
 {
     if([self isReal]) {
+        if (a==0) {
+            return -c/b;
+        }
         return (-b - sqrt([self discriminant]))/(2*a);
     }
     return (-b)/(2*a);
